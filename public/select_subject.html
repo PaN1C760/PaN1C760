@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор предмета</title>
+    <link rel="stylesheet" href="select_subject.css">
+</head>
+<body>
+    <header>
+        <h1>Выберите предмет</h1>
+    </header>
+    
+    <main>
+        <section id="subject-selection">
+            <label for="subject">Выберите предмет:</label>
+            <select id="subject">
+                <option value="math">Математика</option>
+                <option value="physics">Физика</option>
+                <option value="chemistry">Химия</option>
+                <option value="history">История</option>
+            </select>
+            <button id="saveSubject">Сохранить</button>
+        </section>
+    </main>
+
+    <script>
+document.getElementById("saveSubject").addEventListener("click", async () => {
+    const subject = document.getElementById("subject").value;
+    
+    // 🔹 Проверка, что предмет выбран
+    if (!subject) {
+        alert("Выберите предмет!");
+        return;
+    }
+
+    try {
+        console.log("Отправляемый предмет:", subject);
+        document.cookie.split(";").forEach(c => console.log("Cookie:", c.trim()));
+
+        const response = await fetch("/save-subject", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ subject }),
+            credentials: "include"
+        });
+
+        const result = await response.json();
+        console.log("Ответ от сервера:", result);
+
+        if (!result.success) {
+            throw new Error(result.message || "Ошибка сервера");
+        }
+
+        window.location.href = result.redirect || "/teacher_dashboard.html";
+    } catch (error) {
+        console.error("Ошибка сохранения предмета:", error);
+        alert("Ошибка при сохранении предмета: " + error.message);
+    }
+});
+    </script>
+</body>
+</html>

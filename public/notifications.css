@@ -1,0 +1,11 @@
+@import url('base.css');
+
+.notification {
+    padding: 14px;
+    margin: 10px 0;
+    background: rgba(99, 102, 241, 0.2);
+    color: #f8fafc;
+    border-radius: 6px;
+    font-weight: 500;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+}

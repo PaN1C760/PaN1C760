@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет ученика</title>
+    <link rel="stylesheet" href="student_dashboard.css">
+</head>
+<body>
+
+<header>
+    <h2>Добро пожаловать, ученик!</h2>
+    <div>
+        <button id="notifications-btn">🔔 Уведомления</button>
+        <button id="logoutBtn">Выйти</button>
+    </div>
+</header>
+
+<div class="dashboard-container">
+    <!-- Левая часть: тесты -->
+    <section id="tests-section">
+        <h2>Доступные тесты</h2>
+        <ul id="tests"></ul>
+    </section>
+
+    <!-- Центр: контейнер для теста -->
+    <section id="test-container" style="display: none;">
+        <h2 id="test-title"></h2>
+        <form id="testForm">
+            <div id="questionsContainer"></div>
+            <button type="submit">Отправить</button>
+        </form>
+    </section>
+
+    <!-- Правая часть: обмен баллов -->
+    <section id="exchange-section">
+        <h2>Обмен баллов на оценку</h2>
+        <p>Ваши баллы: <span id="points-display">0</span></p>
+
+        <label for="subject">Выберите предмет:</label>
+        <select id="subject">
+            <option value="math">Математика</option>
+            <option value="physics">Физика</option>
+            <option value="history">История</option>
+            <option value="biology">Биология</option>
+        </select>
+
+        <label for="grade">Выберите оценку:</label>
+        <select id="grade">
+            <option value="5">5 (50 баллов)</option>
+            <option value="4">4 (40 баллов)</option>
+            <option value="3">3 (30 баллов)</option>
+        </select>
+
+        <button id="exchangeBtn">Обменять баллы</button>
+    </section>
+</div>
+
+<script src="student_dashboard.js"></script>
+</body>
+</html>

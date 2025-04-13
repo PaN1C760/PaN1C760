@@ -1,0 +1,76 @@
+/* 🎨 Подключение шрифта */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* 🔹 Глобальные стили */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🌌 Градиентный фон (тёмный hi-tech стиль) */
+body {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100vh;
+    padding: 20px;
+}
+
+/* 🔥 Заголовки */
+h1, h2 {
+    text-align: center;
+    font-weight: 600;
+    color: #f8fafc;
+    margin-bottom: 20px;
+}
+
+/* ✏️ Поля ввода (тёмные с неоновым эффектом) */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #1e293b;
+    color: #e2e8f0;
+    box-shadow: inset 0 0 10px rgba(99, 102, 241, 0.4);
+    outline: none;
+}
+
+input:focus, select:focus {
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.8);
+}
+
+/* 🔘 Кнопки */
+button {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.6);
+}
+
+button:hover {
+    background: #4f46e5;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.9);
+}
+
+/* 🌍 Адаптивность */
+@media (max-width: 768px) {
+    input, select, button {
+        font-size: 14px;
+    }
+}

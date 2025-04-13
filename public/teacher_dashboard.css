@@ -1,0 +1,157 @@
+@import url('base.css');
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.header-left {
+    text-align: left;
+}
+
+.header-left h1 {
+    font-size: 32px;
+    margin: 0;
+    color: #f8fafc;
+}
+
+.header-right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Кнопки в header */
+.header-right button {
+    font-size: 18px;
+    padding: 14px 26px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    max-width: 1300px;
+    gap: 40px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 📚 Секция создания тестов */
+#create-test {
+    flex: 1;
+    background: rgba(30, 41, 59, 0.95);
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#create-test h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f8fafc;
+}
+
+label, input, h3, select {
+    font-size: 18px;
+    color: #f8fafc;
+    margin-bottom: 14px;
+    display: block;
+    width: 100%;
+}
+
+input[type="text"],
+input[type="number"] {
+    padding: 12px;
+    font-size: 16px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    border: none;
+}
+
+button {
+    font-size: 16px;
+    padding: 12px 22px;
+    border-radius: 8px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.remove-question {
+    background: #ef4444;
+    color: white;
+    margin-top: 10px;
+}
+
+#addQuestion {
+    background: #10b981;
+    color: white;
+}
+
+#create-test button[type="submit"] {
+    background: #6366f1;
+    color: white;
+}
+
+/* 🧪 Вопросы */
+.question-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* 📄 Список тестов */
+#test-list {
+    flex: 1;
+    background: rgba(30, 41, 59, 0.95);
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+#test-list h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f8fafc;
+}
+
+#tests {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#tests li {
+    background: rgba(99, 102, 241, 0.2);
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    color: #f8fafc;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+/* 📱 Адаптивность */
+@media (max-width: 900px) {
+    main {
+        flex-direction: column;
+    }
+
+    header {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .header-right {
+        margin-left: auto;
+    }
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кабинет Учителя</title>
+    <link rel="stylesheet" href="teacher_dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Кабинет Учителя</h1>
+        </div>
+        <div class="header-right">
+            <button id="notifications-btn">🔔 Уведомления</button>
+            <button id="logoutBtn">Выйти</button>
+        </div>
+    </header>
+    <main>  
+        <section id="create-test">
+            <h2>Создать тест</h2>
+            <form id="testForm">
+                <label for="testTitle">Название теста:</label>
+                <input type="text" id="testTitle" required>
+
+                <h3>Вопросы:</h3>
+                <div id="questionsContainer"></div>
+
+                <button type="button" id="addQuestion">Добавить вопрос</button>
+                <button type="submit">Создать тест</button>
+            </form>
+        </section>
+
+        <section id="test-list">
+            <h2>Список тестов</h2>
+            <ul id="tests"></ul>
+        </section>
+    </main>
+
+    <script src="teacher_dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+@import url('base.css');
+
+main {
+    background: rgba(30, 41, 59, 0.95);
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    margin-top: 20px;
+}
+
+/* 🔹 Заголовок */
+h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* 🎓 Выпадающий список */
+select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: #1e293b;
+    color: #e2e8f0;
+    box-shadow: inset 0 0 10px rgba(99, 102, 241, 0.4);
+    outline: none;
+    font-size: 16px;
+    text-align: center;
+}
+
+select:focus {
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.8);
+}
+
+/* 🔘 Кнопка */
+button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+}

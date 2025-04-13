@@ -1,0 +1,123 @@
+// server.js - Основной сервер на Node.js с Express.js
+
+const express = require('express');
+const mongoose = require('mongoose');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt');
+const fs = require('fs');
+const path = require('path');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Подключение к MongoDB
+mongoose.connect('mongodb://localhost:27017/edu_platform');
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+db.once('open', () => {
+  console.log('Connected to MongoDB');
+});
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(session({
+  secret: 'secretKey',
+  resave: false,
+  saveUninitialized: true,
+}));
+
+// Статические файлы
+app.use(express.static('public'));
+
+// Модели
+const UserSchema = new mongoose.Schema({
+  username: String,
+  password: String,
+  role: { type: String, enum: ['teacher', 'student'], required: true },
+  points: { type: Number, default: 0 },
+});
+const User = mongoose.model('User', UserSchema);
+
+const TestSchema = new mongoose.Schema({
+  title: String,
+  questions: [{
+    question: String,
+    options: [String],
+    correctAnswer: String,
+    points: Number,
+  }],
+  createdBy: String,
+});
+const Test = mongoose.model('Test', TestSchema);
+
+// Регистрация пользователя с выбором роли
+app.post('/register', async (req, res) => {
+  const { username, password, role } = req.body;
+  if (!['teacher', 'student'].includes(role)) {
+    return res.status(400).send('Invalid role');
+  }
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const user = new User({ username, password: hashedPassword, role });
+  await user.save();
+  res.redirect('/login.html');
+});
+
+// Авторизация пользователя
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  const user = await User.findOne({ username });
+
+  if (user && await bcrypt.compare(password, user.password)) {
+    req.session.user = user;
+    res.json({ role: user.role }); // 👈 Должен быть JSON-ответ
+  } else {
+    res.status(401).json({ error: "Invalid credentials" }); // 👈 Ошибка в JSON
+  }
+});
+
+// Создание теста (только для учителей)
+app.post('/create-test', async (req, res) => {
+  if (!req.session.user || req.session.user.role !== 'teacher') {
+    return res.status(403).send('Access denied');
+  }
+  const { title, questions } = req.body;
+  const test = new Test({ title, questions, createdBy: req.session.user.username });
+  await test.save();
+  res.send('Test created');
+});
+
+// Получение списка тестов
+app.get('/tests', async (req, res) => {
+  const tests = await Test.find();
+  res.json(tests);
+});
+
+// Прохождение теста (только для учеников)
+app.post('/take-test/:id', async (req, res) => {
+  if (!req.session.user || req.session.user.role !== 'student') {
+    return res.status(403).send('Access denied');
+  }
+  const test = await Test.findById(req.params.id);
+  if (!test) {
+    return res.status(404).send('Test not found');
+  }
+  let score = 0;
+  req.body.answers.forEach((answer, index) => {
+    if (test.questions[index].correctAnswer === answer) {
+      score += test.questions[index].points;
+    }
+  });
+  await User.updateOne({ username: req.session.user.username }, { $inc: { points: score } });
+  res.send(`Test completed! You earned ${score} points.`);
+});
+
+// Роутинг
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
