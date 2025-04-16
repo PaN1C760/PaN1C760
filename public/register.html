@@ -7,23 +7,26 @@
     <link rel="stylesheet" href="register.css">
 </head>
 <body>
-    <h2>Регистрация</h2>
-    <form id="registerForm">
-        <label>Имя пользователя:</label>
-        <input type="text" id="username" required>
-    
-        <label>Пароль:</label>
-        <input type="password" id="password" required>
-    
-        <p>
-        <label>Выберите роль:</label>
-        <input type="radio" name="role" value="teacher" required> Учитель
-        <input type="radio" name="role" value="student" required> Ученик
-        </p>
-    
-        <p><button type="submit">Зарегистрироваться</button></p>
-    </form>
-    
+    <div class="register-wrapper">
+        <form id="registerForm">
+            <h2>Регистрация</h2>
+
+            <label for="username">Имя пользователя:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" required>
+
+            <label>Выберите роль:</label>
+            <div class="role-options">
+                <label><input type="radio" name="role" value="teacher" required> Учитель</label>
+                <label><input type="radio" name="role" value="student" required> Ученик</label>
+            </div>
+
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+
     <script src="register.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
-@import url('base.css');
-
+@import url('base.css'); 
+ 
 /* 🧠 Header — выравнивание и масштаб */
 header {
     display: flex;
@@ -96,6 +96,7 @@ button {
     font-size: 18px;
     color: #f8fafc;
 }
+
 .test-button {
     display: block;
     width: 100%;
@@ -118,11 +119,12 @@ button {
     background: #4f46e5;
 }
 
+/* 📦 Блок вопросов */
 .question-block {
     background: rgba(255, 255, 255, 0.05);
     padding: 20px;
     border-radius: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .question-text {
@@ -131,13 +133,34 @@ button {
     margin-bottom: 10px;
 }
 
-.option-label {
-    display: block;
+/* ✅ Красивое отображение вариантов ответа */
+.answer-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
     margin: 8px 0;
-    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.answer-option:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.answer-option input[type="radio"] {
+    margin-right: 14px;
+    transform: scale(1.2);
     cursor: pointer;
 }
 
+.answer-option span {
+    font-size: 16px;
+    color: #f1f5f9;
+}
+
+/* 📦 Контейнер с тестом */
 #test-container {
     flex: 1;
     margin-right: auto;
@@ -146,28 +169,6 @@ button {
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     margin-top: 20px;
-}
-
-.question-block {
-    margin-bottom: 20px;
-}
-
-.question-block p {
-    font-size: 18px;
-    font-weight: 500;
-    margin-bottom: 10px;
-}
-
-.answer-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
-}
-
-.answer-option input {
-    transform: scale(1.2);
 }
 
 /* 📱 Адаптивность */

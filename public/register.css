@@ -1,11 +1,105 @@
 @import url('base.css');
 
+/* Центрирование */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    color: #f8fafc;
+}
+
+/* Внешняя обёртка */
+.register-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Форма */
 form {
     background: rgba(30, 41, 59, 0.95);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 60px 60px;
+    border-radius: 16px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
+    max-width: 500px;
     width: 100%;
-    max-width: 400px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* Заголовок */
+form h2 {
+    margin-bottom: 10px;
+    font-size: 34px;
+    font-weight: 700;
+    text-align: center;
+    color: #f8fafc;
+}
+
+/* Инпуты */
+input[type="text"],
+input[type="password"] {
+    padding: 18px;
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.07);
+    color: #f8fafc;
+    outline: none;
+}
+
+input::placeholder {
+    color: #94a3b8;
+}
+
+input:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Подпись к ролям */
+.role-label {
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 5px;
+}
+
+/* Радио-кнопки */
+.role-options {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 8px;
+    font-size: 20px;
+}
+
+.role-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Кнопка */
+button {
+    padding: 18px;
+    font-size: 20px;
+    background: linear-gradient(135deg, #22d3ee, #3b82f6);
+    color: #ffffff;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+    transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+    transform: scale(1.03);
+    background: #2563eb;
 }
