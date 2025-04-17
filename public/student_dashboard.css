@@ -1,5 +1,5 @@
-@import url('base.css'); 
- 
+@import url('base.css');
+
 /* 🧠 Header — выравнивание и масштаб */
 header {
     display: flex;
@@ -31,35 +31,34 @@ header button {
     max-width: 1300px;
     gap: 40px;
     margin: 0 auto;
+    min-height: 500px;
 }
 
 /* 🎯 Левая часть (тесты) */
 #tests-section,
-#test-container {
+#exchange-section {
     flex: 1;
-    text-align: left;
     padding: 30px;
     background: rgba(30, 41, 59, 0.95);
     border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    min-height: 500px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 }
 
-/* 💬 Правая часть (обмен) */
-#exchange-section {
+/* 🧪 Контейнер с тестом */
+#test-container {
     flex: 1;
-    text-align: left;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
     padding: 30px;
     background: rgba(30, 41, 59, 0.95);
     border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    min-height: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    overflow-y: auto;
+    max-height: none;
 }
 
 /* 📄 Элементы формы */
@@ -133,16 +132,17 @@ button {
     margin-bottom: 10px;
 }
 
-/* ✅ Красивое отображение вариантов ответа */
+/* ✅ Ответы — красивое выравнивание */
 .answer-option {
     display: flex;
     align-items: center;
+    gap: 12px;
     padding: 10px 12px;
     margin: 8px 0;
     background-color: rgba(255, 255, 255, 0.07);
     border-radius: 8px;
-    cursor: pointer;
     transition: background-color 0.2s;
+    cursor: pointer;
 }
 
 .answer-option:hover {
@@ -150,25 +150,15 @@ button {
 }
 
 .answer-option input[type="radio"] {
-    margin-right: 14px;
-    transform: scale(1.2);
+    accent-color: #6366f1;
     cursor: pointer;
+    transform: scale(1.3);
 }
 
 .answer-option span {
     font-size: 16px;
     color: #f1f5f9;
-}
-
-/* 📦 Контейнер с тестом */
-#test-container {
-    flex: 1;
-    margin-right: auto;
-    background: rgba(30, 41, 59, 0.95);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    margin-top: 20px;
+    line-height: 1.4;
 }
 
 /* 📱 Адаптивность */

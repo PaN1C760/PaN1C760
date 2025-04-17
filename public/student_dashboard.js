@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Отображение теста
     function displayTest(test) {
-        testContainer.style.display = "block";
+        testContainer.style.display = "flex";
         testTitle.textContent = test.title;
         questionsContainer.innerHTML = "";
     
@@ -54,6 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             div.classList.add("question-block");
     
             const questionTitle = document.createElement("p");
+            questionTitle.classList.add("question-text");
             questionTitle.textContent = `${index + 1}. ${q.question}`;
             div.appendChild(questionTitle);
     
