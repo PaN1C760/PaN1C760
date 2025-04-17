@@ -1,0 +1,3 @@
+MONGO_URI = mongodb+srv://sashako760:SAshakov09@cluster0.xtesmcg.mongodb.net/edu_platform?retryWrites=true&w=majority&appName=Cluster0
+SESSION_SECRET = ABOBA
+CLIENT_ORIGIN = https://pan1c760.onrender.com

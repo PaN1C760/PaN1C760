@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/edu_platform')
+mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://sashako760:SAshakov09@cluster0.xtesmcg.mongodb.net/edu_platform?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log('✅ Подключено к MongoDB'))
   .catch(err => console.error('❌ Ошибка подключения к MongoDB:', err));
 
@@ -29,11 +29,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 app.use(session({
-  secret: 'secretKey',
+  secret: process.env.SESSION_SECRET || 'ABOBA',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/edu_platform' }),
-  cookie: { secure: false, httpOnly: true, maxAge: 1000 * 60 * 60 }
+  store: MongoStore.create({
+    mongoUrl: process.env.MONGO_URI,
+    collectionName: 'sessions'
+  }),
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24
+  }
 }));
 
 // 📌 Определение моделей
