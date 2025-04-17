@@ -1,6 +1,6 @@
 @import url('base.css');
 
-/* 🧠 Header — выравнивание и масштаб */
+/* 🧠 Header */
 header {
     display: flex;
     justify-content: space-between;
@@ -22,7 +22,7 @@ header button {
     padding: 14px 26px;
 }
 
-/* 🧩 Панель с тестами и обменом */
+/* 🧩 Общий контейнер */
 .dashboard-container {
     display: flex;
     justify-content: space-between;
@@ -32,10 +32,9 @@ header button {
     gap: 40px;
     margin: 0 auto;
     min-height: 500px;
-    height: calc(100vh - 120px); /* фиксация общей высоты */
 }
 
-/* 🎯 Левая и правая части */
+/* 🎯 Левая и правая панели */
 #tests-section,
 #exchange-section {
     flex: 1;
@@ -45,22 +44,17 @@ header button {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
-    overflow: hidden;
 }
 
-/* 🧪 Контейнер с тестом */
+/* 🧪 Центральная панель с тестом */
 #test-container {
     flex: 2;
     display: none;
     flex-direction: column;
-    justify-content: flex-start;
     padding: 30px;
     background: rgba(30, 41, 59, 0.95);
     border-radius: 14px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    height: 100%;
     overflow-y: auto;
     max-height: 100%;
 }
@@ -136,19 +130,16 @@ button {
     margin-bottom: 10px;
 }
 
-/* ✅ Ответы — красивое выравнивание */
+/* ✅ Ответы */
 .answer-option {
     display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 12px 14px;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 12px;
     margin: 8px 0;
     background-color: rgba(255, 255, 255, 0.07);
     border-radius: 8px;
-    transition: background-color 0.2s;
     cursor: pointer;
-    line-height: 1.4;
-    word-break: break-word;
 }
 
 .answer-option:hover {
@@ -158,13 +149,15 @@ button {
 .answer-option input[type="radio"] {
     accent-color: #6366f1;
     cursor: pointer;
-    transform: scale(1.3);
-    flex-shrink: 0;
+    transform: scale(1.2);
+    margin-top: 3px;
 }
 
 .answer-option span {
     font-size: 16px;
     color: #f1f5f9;
+    line-height: 1.4;
+    word-break: break-word;
     flex: 1;
 }
 
@@ -172,14 +165,12 @@ button {
 @media (max-width: 900px) {
     .dashboard-container {
         flex-direction: column;
-        height: auto;
     }
 
     #exchange-section,
     #tests-section,
     #test-container {
         width: 100%;
-        min-height: auto;
         height: auto;
     }
 
@@ -193,13 +184,9 @@ button {
     }
 
     .answer-option {
-        font-size: 16px;
         gap: 10px;
+        font-size: 16px;
         padding: 10px;
-    }
-
-    .answer-option input[type="radio"] {
-        transform: scale(1.2);
     }
 
     .test-button {
