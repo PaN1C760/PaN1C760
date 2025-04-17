@@ -136,7 +136,7 @@ button {
 .answer-option {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
     gap: 12px;
     padding: 10px 12px;
     margin: 8px 0;
@@ -164,7 +164,7 @@ button {
     accent-color: #6366f1;
     cursor: pointer;
     transform: scale(0.9);
-    margin-left: 12px;
+    margin-left: 1px;
 }
 
 /* 📱 Адаптивность */
