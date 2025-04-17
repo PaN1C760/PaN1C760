@@ -133,32 +133,35 @@ button {
 /* ✅ Ответы */
 .answer-option {
     display: flex;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
     gap: 12px;
     padding: 10px 12px;
     margin: 8px 0;
     background-color: rgba(255, 255, 255, 0.07);
     border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .answer-option:hover {
     background-color: rgba(255, 255, 255, 0.12);
 }
 
-.answer-option input[type="radio"] {
-    accent-color: #6366f1;
-    cursor: pointer;
-    transform: scale(1.2);
-    margin-top: 3px;
-}
-
 .answer-option span {
     font-size: 16px;
     color: #f1f5f9;
     line-height: 1.4;
-    word-break: break-word;
     flex: 1;
+    word-break: break-word;
+    text-align: left;
+}
+
+.answer-option input[type="radio"] {
+    accent-color: #6366f1;
+    cursor: pointer;
+    transform: scale(1); /* уменьшил размер */
+    margin-left: 10px;
 }
 
 /* 📱 Адаптивность */
