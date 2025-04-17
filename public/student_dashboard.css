@@ -1,196 +1,208 @@
 @import url('base.css');
 
-/* Общие стили */
-body {
-    margin: 0;
-    font-family: "Segoe UI", sans-serif;
-    background: #0e1628;
-    color: white;
-}
-
-/* Header */
+/* 🧠 Header — выравнивание и масштаб */
 header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 30px;
     padding: 20px 30px;
-    background-color: #111b2f;
-    border-bottom: 2px solid #222c40;
 }
 
 header h2 {
     margin: 0;
+    font-size: 32px;
+    color: #f8fafc;
 }
 
 header button {
-    margin-left: 10px;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    background: #5b5ef6;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+    margin-left: 12px;
+    font-size: 18px;
+    padding: 14px 26px;
 }
 
-/* Основная панель */
+/* 🧩 Панель с тестами и обменом */
 .dashboard-container {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    gap: 20px;
-    height: calc(100vh - 80px);
-    box-sizing: border-box;
+    align-items: stretch;
+    width: 100%;
+    max-width: 1300px;
+    gap: 40px;
+    margin: 0 auto;
+    min-height: 500px;
+    height: calc(100vh - 120px); /* фиксация общей высоты */
 }
 
-.dashboard-container > section {
-    flex: 1;
-    background: #1b263b;
-    padding: 20px;
-    border-radius: 10px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Панель тестов */
-#tests {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.test-button {
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background: #5b5ef6;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-    text-align: left;
-    transition: 0.3s;
-}
-
-.test-button:hover {
-    background: #6f71ff;
-}
-
-/* Контейнер с тестом */
-#test-container {
-    overflow-y: auto;
-}
-
-.question-block {
-    margin-bottom: 25px;
-    padding: 15px;
-    background-color: #283347;
-    border-radius: 8px;
-}
-
-.question-block p {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.answer-option {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    background-color: #36425a;
-    padding: 10px 12px;
-    border-radius: 6px;
-    transition: background-color 0.3s;
-}
-
-.answer-option:hover {
-    background-color: #44506a;
-}
-
-.answer-option input[type="radio"] {
-    margin-right: 10px;
-    accent-color: #5b5ef6;
-    transform: scale(1.2);
-}
-
-/* Кнопка отправки */
-#testForm button[type="submit"] {
-    align-self: flex-start;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #5b5ef6;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#testForm button[type="submit"]:hover {
-    background-color: #6a6eff;
-}
-
-/* Обмен */
-#exchange-section select,
-#exchange-section button {
-    margin-top: 10px;
-    padding: 10px;
-    border-radius: 6px;
-    border: none;
-    background-color: #2b3448;
-    color: white;
-}
-
-#exchange-section button {
-    background-color: #5b5ef6;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#exchange-section button:hover {
-    background-color: #6f71ff;
-}
-
-/* Равная высота блоков */
+/* 🎯 Левая и правая части */
 #tests-section,
-#test-container,
 #exchange-section {
+    flex: 1;
+    padding: 30px;
+    background: rgba(30, 41, 59, 0.95);
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     height: 100%;
     overflow: hidden;
 }
 
+/* 🧪 Контейнер с тестом */
 #test-container {
+    flex: 2;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 30px;
+    background: rgba(30, 41, 59, 0.95);
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    height: 100%;
     overflow-y: auto;
+    max-height: 100%;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
+/* 📄 Элементы формы */
+label, p {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+select, input {
+    font-size: 18px;
+    padding: 14px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 18px;
+    padding: 14px 28px;
+    border-radius: 8px;
+}
+
+/* 📝 Список тестов */
+#tests {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+#tests li {
+    padding: 16px;
+    margin-bottom: 14px;
+    background: rgba(99, 102, 241, 0.2);
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 18px;
+    color: #f8fafc;
+}
+
+.test-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 15px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #6366f1, #4f46e5);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 3px 12px rgba(99, 102, 241, 0.4);
+    transition: all 0.2s ease-in-out;
+}
+
+.test-button:hover {
+    transform: scale(1.02);
+    background: #4f46e5;
+}
+
+/* 📦 Блок вопросов */
+.question-block {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.question-text {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* ✅ Ответы — красивое выравнивание */
+.answer-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    margin: 8px 0;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.answer-option:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.answer-option input[type="radio"] {
+    accent-color: #6366f1;
+    cursor: pointer;
+    transform: scale(1.3);
+    flex-shrink: 0;
+}
+
+.answer-option span {
+    font-size: 16px;
+    color: #f1f5f9;
+    flex: 1;
+}
+
+/* 📱 Адаптивность */
+@media (max-width: 900px) {
     .dashboard-container {
         flex-direction: column;
         height: auto;
     }
 
-    .dashboard-container > section {
+    #exchange-section,
+    #tests-section,
+    #test-container {
+        width: 100%;
+        min-height: auto;
         height: auto;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header button {
+        margin-top: 10px;
+    }
+
+    .answer-option {
+        font-size: 16px;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .answer-option input[type="radio"] {
+        transform: scale(1.2);
     }
 
     .test-button {
         font-size: 16px;
-    }
-
-    .answer-option {
-        flex-direction: row;
-        font-size: 16px;
-    }
-
-    .answer-option input[type="radio"] {
-        transform: scale(1.1);
-    }
-
-    #testForm button[type="submit"],
-    #exchange-section button {
-        width: 100%;
-        text-align: center;
     }
 }
