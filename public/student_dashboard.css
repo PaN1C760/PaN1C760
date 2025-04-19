@@ -155,8 +155,11 @@ button {
     color: #f1f5f9;
     line-height: 1.4;
     text-align: left;
-    white-space: normal;
-    word-break: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: none;
+    max-width: calc(100% - 30px);
 }
 
 .answer-option input[type="radio"] {
