@@ -34,7 +34,7 @@ header button {
     min-height: 500px;
 }
 
-/* 🎯 Левая часть (тесты) */
+/* 🎯 Левая и правая часть */
 #tests-section,
 #exchange-section {
     flex: 1;
@@ -49,7 +49,7 @@ header button {
 
 /* 🧪 Контейнер с тестом */
 #test-container {
-    flex: 1;
+    flex: 2;
     display: none;
     flex-direction: column;
     justify-content: flex-start;
@@ -59,6 +59,7 @@ header button {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     overflow-y: auto;
     max-height: none;
+    width: 100%;
 }
 
 /* 📄 Элементы формы */
@@ -132,13 +133,13 @@ button {
     margin-bottom: 10px;
 }
 
-/* ✅ Ответы — выравнивание, radio справа */
+/* ✅ Ответы — выравнивание */
 .answer-option {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-    padding: 10px 12px;
+    padding: 12px 14px;
     margin: 8px 0;
     background-color: rgba(255, 255, 255, 0.07);
     border-radius: 8px;
@@ -155,11 +156,9 @@ button {
     color: #f1f5f9;
     line-height: 1.4;
     text-align: left;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex: none;
-    max-width: calc(100% - 30px);
+    overflow-wrap: break-word;
+    word-break: break-word;
+    flex: 1;
 }
 
 .answer-option input[type="radio"] {
@@ -172,13 +171,7 @@ button {
 @media (max-width: 900px) {
     .dashboard-container {
         flex-direction: column;
-    }
-
-    #exchange-section,
-    #tests-section,
-    #test-container {
-        width: 100%;
-        min-height: auto;
+        gap: 20px;
     }
 
     header {
@@ -190,12 +183,46 @@ button {
         margin-top: 10px;
     }
 
+    #tests-section,
+    #exchange-section,
+    #test-container {
+        width: 100%;
+        padding: 20px;
+        min-height: auto;
+    }
+
     .answer-option {
         flex-direction: row;
         justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .question-text {
+        font-size: 17px;
     }
 
     .answer-option span {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .answer-option {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .answer-option input[type="radio"] {
+        align-self: flex-start;
+        margin-top: 5px;
+    }
+
+    .question-text {
         font-size: 16px;
+    }
+
+    .answer-option span {
+        font-size: 14px;
     }
 }
