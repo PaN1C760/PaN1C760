@@ -156,11 +156,12 @@ button {
     color: #f1f5f9;
     line-height: 1.4;
     text-align: left;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: none;
+    max-width: calc(100% - 30px);
 }
-
 .answer-option input[type="radio"] {
     accent-color: #6366f1;
     cursor: pointer;
